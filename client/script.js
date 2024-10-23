@@ -1,15 +1,17 @@
 const messageForm = document.querySelector("#messageForm");
 
-function handleSubmitMessageForm(event) {
+async function handleSubmitMessageForm(event) {
   event.preventDefault();
 
   const formData = new FormData(messageForm);
   const message = formData.get("message");
 
-  fetch("http://localhost:3000/message", {
+  const response = await fetch("http://localhost:3000/message", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
   });
+  const data = await response.json();
 }
-messageForm.addEventListener("submit", handleSubmitMessageForm);
+
+form.addEventListener("submit", handleSubmit);

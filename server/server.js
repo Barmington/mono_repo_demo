@@ -5,8 +5,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", function (request, response) {
+  response.json("You are looking at my root route. How roude.");
+});
+
 app.post("/message", function (request, response) {
-  console.log("request.body");
+  const message = request.body.message;
   response.json({ Status: "Message received!" });
 });
 
